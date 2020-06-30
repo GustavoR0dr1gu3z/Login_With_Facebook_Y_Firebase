@@ -7,6 +7,10 @@
 </head>
 <body>
     
+    <button id = "btn">Login con Facebook</button>
+
+
+
 
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
@@ -28,7 +32,18 @@
 </script>
 
 <script>
+    let btn = document.querySelector('#btn')
     
+    //Firebase function
+    function login(){
+        let provider = new firebase.auth.FacebookAuthProvider()
+        return firebase.auth().signInWithPopUp(provider)
+        .then(data =>{
+            console.log(data.user)
+        })
+    }
+    
+    btn.onClick = login
 </script>
 
 
